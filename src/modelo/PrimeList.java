@@ -26,4 +26,5 @@ public class PrimeList extends ArrayList<Integer>{
         }
         return super.add(numero);
     }
+
 }

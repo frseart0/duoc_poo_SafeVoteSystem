@@ -1,12 +1,22 @@
 package modelo;
-import modelo.PrimeList;
-import java.util.Random;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class PrimesThread implements Runnable{
+    private final PrimeList primeList;
+
+    public PrimesThread(PrimeList primeList){
+        this.primeList = primeList;
+    }
 
     @Override
     public void run() {
-        int numero = (int) (Math.random()*100);
-        
+        int numero = ThreadLocalRandom.current().nextInt(100);
+        try {
+            primeList.add(numero);
+            System.out.println("primo añadido: " + numero);
+        } catch (IllegalArgumentException e) {
+            System.out.println("numero rechazado: " + numero);
+        }
     }
 }

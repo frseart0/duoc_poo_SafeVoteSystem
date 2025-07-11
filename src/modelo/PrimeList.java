@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class PrimeList extends ArrayList<Integer>{
 
-    public boolean isPrime(int numero){
+    public static boolean isPrime(int numero){
         if (numero <= 1) {
             return false;
         }
@@ -27,6 +27,14 @@ public class PrimeList extends ArrayList<Integer>{
             throw new IllegalArgumentException("numero invalido: no es primo");
         }
         return super.add(numero);
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        if (isPrime((Integer) o)) {
+            return super.remove(o);
+        }
+        return true;
     }
 
 }

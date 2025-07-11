@@ -3,8 +3,11 @@ import modelo.PrimesThread;
 
 public class Main {
     public static void main(String[] args) {
+        final String archivoLista = "src/colecciones/numeros_primos.csv";
+
         PrimeList primeList = new PrimeList();
-        Thread thread = new Thread(new PrimesThread(primeList));
-        thread.start();
+        primeList.CargarLista(archivoLista);
+        System.out.println(primeList);
+
     }
 }

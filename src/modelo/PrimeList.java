@@ -1,9 +1,11 @@
 package modelo;
+
 import java.util.ArrayList;
+import java.io.*;
 
-public class PrimeList extends ArrayList<Integer>{
+public class PrimeList extends ArrayList<Integer> {
 
-    public static boolean isPrime(int numero){
+    public static boolean isPrime(int numero) {
         if (numero <= 1) {
             return false;
         }
@@ -14,7 +16,7 @@ public class PrimeList extends ArrayList<Integer>{
             return false;
         }
         for (int i = 3; i <= Math.sqrt(numero); i += 2) {
-            if (numero % i == 0){
+            if (numero % i == 0) {
                 return false;
             }
         }
@@ -31,10 +33,25 @@ public class PrimeList extends ArrayList<Integer>{
 
     @Override
     public boolean remove(Object o) {
-        if (isPrime((Integer) o)) {
+        if (!isPrime((Integer) o)) {
             return super.remove(o);
         }
         return true;
     }
 
+    public void CargarLista(String archivoLista) {
+        clear();
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoLista))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                try {
+                    int numero = Integer.parseInt(linea.trim());
+                    this.add(numero);
+                } catch (IllegalArgumentException _) {
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+        }
+    }
 }

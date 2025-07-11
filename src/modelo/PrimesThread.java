@@ -11,8 +11,7 @@ public class PrimesThread implements Runnable {
 
     @Override
     public void run() {
-        System.out.printf("thread: " + Thread.currentThread().getName());
-        int numero = ThreadLocalRandom.current().nextInt(100);
+        int numero = ThreadLocalRandom.current().nextInt(10000);
         try {
             primeList.add(numero);
             System.out.println("primo añadido: " + numero);

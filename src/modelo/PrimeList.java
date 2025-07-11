@@ -39,6 +39,10 @@ public class PrimeList extends ArrayList<Integer> {
         return true;
     }
 
+    public void getPrimeCount() {
+        System.out.println("cantidad de primos: " + this.size());
+    }
+
     public void CargarLista(String archivoLista) {
         clear();
         try (BufferedReader br = new BufferedReader(new FileReader(archivoLista))) {
@@ -53,5 +57,6 @@ public class PrimeList extends ArrayList<Integer> {
         } catch (IOException e) {
             System.err.println("Error al leer el archivo: " + e.getMessage());
         }
+        System.out.println("Lista Cargada");
     }
 }

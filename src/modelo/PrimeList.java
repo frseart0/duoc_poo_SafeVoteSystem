@@ -14,7 +14,9 @@ public class PrimeList extends ArrayList<Integer>{
             return false;
         }
         for (int i = 3; i <= Math.sqrt(numero); i += 2) {
-            if (numero % i == 0) return false;
+            if (numero % i == 0){
+                return false;
+            }
         }
         return true;
     }

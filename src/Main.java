@@ -8,5 +8,9 @@ public class Main {
         lista.add(7);
         lista.add(11);
         System.out.println(lista);
+        int numero = (int) (Math.random()*1000);
+        System.out.println(numero);
+        lista.add(numero);
+        System.out.println(lista);
     }
 }

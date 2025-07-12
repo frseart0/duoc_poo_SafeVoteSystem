@@ -15,7 +15,7 @@ public class PrimesThread implements Runnable {
         try {
             primeList.add(numero);
             System.out.println("primo añadido: " + numero);
-            primeList.guardarNumero(Globals.archivoListaPrimos, numero);
+            primeList.guardarNumero(GlobalVars.archivoListaPrimos, numero);
         } catch (IllegalArgumentException e) {
             System.out.println("numero rechazado: " + numero);
         }

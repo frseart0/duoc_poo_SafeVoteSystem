@@ -11,9 +11,12 @@ public class Main {
         PrimesThread primesthread1 = new PrimesThread(primeList);
 
         Thread thread1 = new Thread(primesthread1);
+        Thread thread2 = new Thread(primesthread1);
 
         thread1.start();
+        thread2.start();
         thread1.join();
+        thread2.join();
 
     }
 }

@@ -59,4 +59,18 @@ public class PrimeList extends ArrayList<Integer> {
         }
         System.out.println("Lista Cargada");
     }
+
+    public void guardarNumero(String ArchivoLista,int numero) {
+        if (!isPrime(numero)) {
+            System.out.println("Número no es primo, no se guardará.");
+            return;
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ArchivoLista, true))) {
+            bw.write(numero + "\n");
+            System.out.println("Número guardado.");
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+    }
 }

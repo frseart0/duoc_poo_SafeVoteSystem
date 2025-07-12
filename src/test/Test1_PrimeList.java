@@ -9,6 +9,7 @@ public class Test1_PrimeList {
         primeList.add(3);
         primeList.add(5);
         System.out.println(primeList);
+        primeList.getPrimeCount();
         primeList.remove(1); // <- indice
         System.out.println(primeList);
         primeList.add(10); // <- IllegalArgumentException

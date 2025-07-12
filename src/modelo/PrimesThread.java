@@ -11,13 +11,15 @@ public class PrimesThread implements Runnable {
 
     @Override
     public void run() {
-        int numero = ThreadLocalRandom.current().nextInt(100);
-        try {
-            primeList.add(numero);
-            System.out.println("primo añadido: " + numero);
-            primeList.guardarNumero(GlobalVars.archivoListaPrimos, numero);
-        } catch (IllegalArgumentException e) {
-            System.out.println("numero rechazado: " + numero);
+        synchronized (primeList) {
+            int numero = ThreadLocalRandom.current().nextInt(100);
+            try {
+                primeList.add(numero);
+                System.out.println("primo añadido: " + numero);
+                primeList.guardarNumero(GlobalVars.archivoListaPrimos, numero);
+            } catch (IllegalArgumentException e) {
+                System.out.println("numero rechazado: " + numero);
+            }
         }
     }
 }

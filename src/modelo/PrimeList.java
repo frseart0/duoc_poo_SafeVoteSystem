@@ -24,7 +24,7 @@ public class PrimeList extends ArrayList<Integer> {
     }
 
     @Override
-    public boolean add(Integer numero) {
+    public synchronized boolean add(Integer numero) {
         if (!isPrime(numero)) {
             throw new IllegalArgumentException("numero invalido: no es primo");
         }
@@ -32,18 +32,18 @@ public class PrimeList extends ArrayList<Integer> {
     }
 
     @Override
-    public boolean remove(Object o) {
+    public synchronized boolean remove(Object o) {
         if (!isPrime((Integer) o)) {
             return super.remove(o);
         }
         return true;
     }
 
-    public void getPrimeCount() {
+    public synchronized void getPrimeCount() {
         System.out.println("cantidad de primos: " + this.size());
     }
 
-    public void CargarLista(String archivoLista) {
+    public synchronized void CargarLista(String archivoLista) {
         clear();
         try (BufferedReader br = new BufferedReader(new FileReader(archivoLista))) {
             String linea;
@@ -60,7 +60,7 @@ public class PrimeList extends ArrayList<Integer> {
         System.out.println("Lista Cargada");
     }
 
-    public void guardarNumero(String ArchivoLista,int numero) {
+    public synchronized void guardarNumero(String ArchivoLista,int numero) {
         if (!isPrime(numero)) {
             System.out.println("Número no es primo, no se guardará.");
             return;
